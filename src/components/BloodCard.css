@@ -1,0 +1,110 @@
+/* Card Container */
+.blood-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    max-width: 220px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  
+  .blood-card.critical {
+    border-color: #ff4d4d;
+    animation: pulse-border 2s infinite;
+  }
+  
+  @keyframes pulse-border {
+    0% { border-color: #ff4d4d; }
+    50% { border-color: #ff9999; }
+    100% { border-color: #ff4d4d; }
+  }
+  
+  /* Blood Type Label */
+  .blood-type {
+    margin: 0 0 0.8rem 0;
+    color: #333;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  /* Blood Level Container */
+  .blood-level-container {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  /* Empty Progress Bar Track */
+  .blood-level-bar {
+    height: 12px;
+    background: #f0f0f0;
+    border-radius: 6px;
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  
+  /* Actual Blood Fill */
+  .blood-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+    transition: width 0.5s ease;
+  }
+  
+  .blood-card.critical .blood-fill {
+    background: linear-gradient(90deg, #e01212, #da0505);
+    animation: pulse-fill 1.5s infinite;
+  }
+  
+  @keyframes pulse-fill {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
+  
+  /* Percentage Text */
+  .blood-percentage {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #666;
+    min-width: 40px;
+    text-align: right;
+  }
+  
+  /* Units Text */
+  .blood-units {
+    margin: 0.5rem 0 1rem 0;
+    font-size: 0.95rem;
+    color: #666;
+    text-align: center;
+  }
+  
+  .alert-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #ff4d4d, #e60000);
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+  }
+  
+  .alert-btn:hover {
+    background: linear-gradient(135deg, #ed2d2d, #ef2e2e);
+    box-shadow: 0 2px 6px rgba(255, 77, 77, 0.4);
+  }
+  
+  .alert-btn:active {
+    transform: scale(0.98);
+  }

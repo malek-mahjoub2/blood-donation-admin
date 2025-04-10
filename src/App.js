@@ -1,24 +1,73 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Navbar from './components/Navbar';
+import Donors from './pages/Donors'; // Correct import
+import BloodCard from './components/BloodCard';
+import Analytics from './pages/Analytics';
 
+
+// Dashboard Component
+const Dashboard = () => {
+  const bloodTypes = [
+    { type: 'O+', units: 15, color: '#FF6B6B', icon: '🩸' },
+    { type: 'O-', units: 2, color: '#FF2D2D', icon: '💉' },
+    { type: 'A+', units: 8, color: '#FF8E8E', icon: '🩹' },
+    { type: 'B-', units: 4, color: '#FF5252', icon: '🧪' },
+    { type: 'AB+', units: 6, color: '#FF7A7A', icon: '🧬' },
+  ];
+
+  return (
+    <div className="blood-dashboard">
+      <header className="dashboard-header">
+        <h1>
+          <span className="pulse">❤️</span> Tableau de Bord Hémovigilance
+        </h1>
+        <div className="emergency-alert">
+          <span className="blink">⚠️</span> SURVEILLANCE TEMPS RÉEL
+        </div>
+      </header>
+
+      <div className="blood-grid">
+        {bloodTypes.map((blood) => (
+          <BloodCard 
+            key={blood.type}
+            type={blood.type} 
+            units={blood.units}
+            threshold={5}
+            icon={blood.icon}
+            color={blood.color}
+          />
+        ))}
+      </div>
+
+      <div className="dashboard-footer">
+        <div className="status-indicator">
+          <span className="led-green"></span> Système Opérationnel
+        </div>
+        <div className="last-update">
+          🕒 Dernière mise à jour : {new Date().toLocaleTimeString('fr-FR')}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Main App Component
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-container">
+        <Navbar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/donneurs" element={<Donors />} />
+            <Route path="/analytiques" element={<Analytics />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
