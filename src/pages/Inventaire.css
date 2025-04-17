@@ -1,0 +1,241 @@
+/* Main Container */
+.inventaire-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .inventaire-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .inventaire-header h1 {
+    margin: 0;
+    color: #c0392b;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .pulse-icon {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Inventory Controls */
+  .inventory-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .location-filter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .location-filter select {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: white;
+  }
+  
+  /* Blood Stock Grid */
+  .blood-stock-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stock-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  
+  .stock-card.critical {
+    border-top: 4px solid #ff4757;
+  }
+  
+  .stock-card.warning {
+    border-top: 4px solid #ffa502;
+  }
+  
+  .stock-card.safe {
+    border-top: 4px solid #2ed573;
+  }
+  
+  .blood-type-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .blood-type-header h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #2c3e50;
+  }
+  
+  .status-indicator {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .status-indicator.critical {
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+  }
+  
+  .status-indicator.warning {
+    background: rgba(255, 165, 2, 0.1);
+    color: #ffa502;
+  }
+  
+  .status-indicator.safe {
+    background: rgba(46, 213, 115, 0.1);
+    color: #2ed573;
+  }
+  
+  /* Stock Meter */
+  .stock-meter {
+    height: 10px;
+    background: #ecf0f1;
+    border-radius: 5px;
+    margin: 1rem 0;
+    overflow: hidden;
+  }
+  
+  .meter-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.5s ease;
+  }
+  
+  .stock-numbers {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .current-stock {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .threshold {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+  }
+  
+  /* Location Info */
+  .location-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Stock Actions */
+  .stock-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .stock-adjustment {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .stock-adjustment button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  }
+  
+  .stock-adjustment button:hover {
+    background: #f1f2f6;
+  }
+  
+  .stock-adjustment button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .transfer-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .transfer-btn:hover {
+    background: #2980b9;
+  }
+  
+  /* Inventory Summary */
+  .inventory-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .summary-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .summary-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: #555;
+  }
+  
+  .summary-card p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .summary-card.critical {
+    border-top: 3px solid #ff4757;
+  }
+  
+  .summary-card.warning {
+    border-top: 3px solid #ffa502;
+  }
+  
+  .summary-card.total {
+    border-top: 3px solid #2ed573;
+  }

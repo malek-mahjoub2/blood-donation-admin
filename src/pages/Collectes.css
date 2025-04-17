@@ -1,0 +1,197 @@
+/* Main Container */
+.collectes-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .page-title {
+    color: #c0392b;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Blood Drives Grid */
+  .collectes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  /* Drive Cards */
+  .drive-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .drive-card.planned {
+    border-top: 4px solid #3498db;
+  }
+  
+  .drive-card.completed {
+    border-top: 4px solid #2ecc71;
+    opacity: 0.8;
+  }
+  
+  .drive-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .drive-header h3 {
+    margin: 0;
+    color: #2c3e50;
+  }
+  
+  .status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  
+  .status-badge.planned {
+    background: #e3f2fd;
+    color: #3498db;
+  }
+  
+  .status-badge.completed {
+    background: #e8f5e9;
+    color: #2ecc71;
+  }
+  
+  .drive-details {
+    margin-bottom: 1.5rem;
+  }
+  
+  .drive-details p {
+    margin: 0.5rem 0;
+    color: #34495e;
+  }
+  
+  /* Progress Bar */
+  .progress-container {
+    margin: 1rem 0;
+  }
+  
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background: #ecf0f1;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: #c0392b;
+    border-radius: 4px;
+  }
+  
+  /* Actions */
+  .drive-actions {
+    display: flex;
+    gap: 0.8rem;
+  }
+  
+  .action-btn {
+    flex: 1;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .view-btn {
+    background: #f5f5f5;
+    color: #34495e;
+  }
+  
+  .view-btn:hover {
+    background: #e0e0e0;
+  }
+  
+  .edit-btn {
+    background: #3498db;
+    color: white;
+  }
+  
+  .edit-btn:hover {
+    background: #2980b9;
+  }
+  
+  /* New Drive Form */
+  .new-drive-form {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    margin-top: 2rem;
+  }
+  
+  .new-drive-form h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .add-drive-btn {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .add-drive-btn:hover {
+    background: #a5281b;
+  }
+  
+  .add-drive-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+  }

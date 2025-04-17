@@ -2,10 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-import Donors from './pages/Donors'; // Correct import
+import Donors from './pages/Donneurs'; 
 import BloodCard from './components/BloodCard';
 import Analytics from './pages/Analytics';
-
+import Collectes from './pages/Collectes';
+import Inventaire from './pages/Inventaire';
+import Rapports from './pages/Rapports';
 
 // Dashboard Component
 const Dashboard = () => {
@@ -64,6 +66,9 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/donneurs" element={<Donors />} />
             <Route path="/analytiques" element={<Analytics />} />
+            <Route path="/collectes" element={<Collectes />} />
+            <Route path="/inventaire" element={<Inventaire />} />
+            <Route path="/rapports" element={<Rapports />} />
           </Routes>
         </main>
       </div>
