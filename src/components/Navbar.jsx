@@ -27,7 +27,7 @@ const Navbar = () => {
         </div>
         <div className="hospital-info">
           <span>Centre Transfusion Sanguine</span>
-          <span>Paris, FR</span>
+          <span>Tunis, Tunisia</span>
         </div>
       </div>
 

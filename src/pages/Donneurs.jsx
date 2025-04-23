@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Donneurs.css';
 
@@ -16,47 +16,10 @@ const Donneurs = () => {
   // Blood types
   const bloodTypes = ['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'];
 
-  // Sample donors data
-  const [donors, setDonors] = useState([
-    {
-      id: 1,
-      name: 'Mohamed Ben Ali',
-      cin: '12345678',
-      bloodType: 'O+',
-      governorate: 'Tunis',
-      lastDonation: '2023-11-15',
-      donationsCount: 5,
-      phone: '12345678',
-      email: 'mohamed.benali@example.com',
-      status: 'active'
-    },
-    {
-      id: 2,
-      name: 'Amira Trabelsi',
-      cin: '87654321',
-      bloodType: 'A-',
-      governorate: 'Sousse',
-      lastDonation: '2023-10-20',
-      donationsCount: 3,
-      phone: '98765432',
-      email: 'amira.trabelsi@example.com',
-      status: 'active'
-    },
-    {
-      id: 3,
-      name: 'Samir Boukadida',
-      cin: '45678912',
-      bloodType: 'B+',
-      governorate: 'Sfax',
-      lastDonation: '2022-05-10',
-      donationsCount: 7,
-      phone: '55667788',
-      email: 'samir.boukadida@example.com',
-      status: 'inactive'
-    }
-  ]);
-
-  // Search and filter states
+  // State management
+  const [donors, setDonors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
     bloodType: '',
@@ -64,7 +27,24 @@ const Donneurs = () => {
     status: ''
   });
 
-  // Filter donors
+  // Fetch donors from API
+  useEffect(() => {
+    const fetchDonors = async () => {
+      try {
+        const response = await fetch('http://localhost:5119/api/donors');
+        if (!response.ok) throw new Error("Échec du chargement des donneurs");
+        const data = await response.json();
+        setDonors(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDonors();
+  }, []);
+
+  // Filter donors (client-side as fallback)
   const filteredDonors = donors.filter(donor => {
     const matchesSearch = donor.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          donor.cin.includes(searchTerm);
@@ -76,13 +56,31 @@ const Donneurs = () => {
   });
 
   // Toggle donor status
-  const toggleDonorStatus = (id) => {
-    setDonors(donors.map(donor => 
-      donor.id === id 
-        ? { ...donor, status: donor.status === 'active' ? 'inactive' : 'active' } 
-        : donor
-    ));
+  const toggleDonorStatus = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5119/api/donors/${id}/toggle-status`, 
+        { method: 'PATCH' }
+      );
+      if (!response.ok) throw new Error("Échec de la modification du statut");
+      
+      setDonors(donors.map(donor => 
+        donor.id === id 
+          ? { ...donor, status: donor.status === 'active' ? 'inactive' : 'active' } 
+          : donor
+      ));
+    } catch (err) {
+      setError(err.message);
+    }
   };
+
+  if (loading) {
+    return <div className="loading">Chargement en cours...</div>;
+  }
+
+  if (error) {
+    return <div className="error">Erreur: {error}</div>;
+  }
 
   return (
     <div className="donneurs-container">

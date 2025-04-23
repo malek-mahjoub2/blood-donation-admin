@@ -9,25 +9,24 @@ const Dashboard = () => {
   });
   
   const [alerts, setAlerts] = useState([
-    { id: 1, message: "O- CRITICAL: 2 units left!", priority: "critical", time: "2 mins ago" }
+    { id: 1, message: "O- CRITIQUE : Il ne reste que 2 unités !", priority: "critical", time: "2 mins ago" }
   ]);
 
-  // Simulate real-time updates
   useEffect(() => {
     const interval = setInterval(() => {
-      // Fetch API data here later
+ 
       setBloodStock(prev => ({
         ...prev,
-        'O-': prev['O-'] - 1 // Simulate depletion
+        'O-': prev['O-'] - 1 
       }));
-    }, 30000); // Update every 30 sec
+    }, 30000); 
     
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="dashboard">
-      <h1>Blood Stock Dashboard</h1>
+      <h1>Tableau de bord des stocks de sang</h1>
       <div className="blood-grid">
         {Object.entries(bloodStock).map(([type, units]) => (
           <BloodCard key={type} type={type} units={units} threshold={5} />

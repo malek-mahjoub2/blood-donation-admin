@@ -140,7 +140,7 @@ const Collectes = () => {
         </div>
         
         <div className="form-group">
-          <label>الولاية | Gouvernorat:</label>
+          <label>Gouvernorat:</label>
           <select
             value={newDrive.governorate}
             onChange={(e) => setNewDrive({...newDrive, governorate: e.target.value})}
